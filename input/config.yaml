@@ -1,0 +1,47 @@
+# config.yaml
+# Configuration file for Telegram Message Forwarder
+# Get your API credentials from: https://my.telegram.org
+
+telegram:
+  # Your Telegram API ID (get from https://my.telegram.org)
+  api_id: 20159262
+  # Your Telegram API Hash (get from https://my.telegram.org)
+  api_hash: "9994fd74007806c90d00f9b161353437"
+  # Session file name for storing authentication
+  session_name: "message_forwarder"
+
+forwarder:
+  # Forwarding mode: "once" (run once) or "daily" (repeat every X hours)
+  mode: "daily"
+  # Source message URL to forward (format: https://t.me/channel/message_id)
+  source_message: "https://t.me/StrikeProxyTG/4"
+
+  # List of destination channels/groups to forward to
+  # Format: https://t.me/channel_name or https://t.me/channel_name/topic_id
+  # Add as many destinations as needed, one per line with dash
+  destinations:
+    - "https://t.me/StrikeProxyTG" # Example 1
+    - "https://t.me/sxfr" # Example 2
+    - "https://t.me/example" # Example 3
+
+
+  # Destinations to ignore if forwarding fails (logs warning instead of error)
+  # Useful for channels that may be restricted or temporarily unavailable
+  ignore_on_error:
+    - "https://t.me/example"
+
+  # For daily mode: how many hours to wait between forwarding cycles
+  daily_refresh_hours: 12
+
+  # Rate limiting: seconds to wait between forwarding to each destination
+  # Helps avoid hitting Telegram's rate limits
+  delay_between_forwards: 0
+
+# Logging configuration
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR
+  level: "INFO"
+  # Enable colored output in terminal
+  show_colors: true
+  # Show timestamps in log messages
+  show_time: true
